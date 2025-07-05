@@ -56,38 +56,39 @@ alert("Tira i Dadi");
 playerNum=Math.floor(Math.random()*6)+1;
 comNum=Math.floor(Math.random()*6)+1;
 if(playerNum==comNum) {
-  message="Round "+ x +" [player: "+ playerNum +":"+ comNum + "computer] \n Patta";
+  message="Round "+ parseInt(x+1) +" [player: "+ playerNum +":"+ comNum + "computer] \n Patta";
 }
 else if(playerNum>comNum){
-  message="Round "+ x +" [player: "+ playerNum +":"+ comNum + "computer] \n Hai Vinto";
+  message="Round "+ parseInt(x+1) +" [player: "+ playerNum +":"+ comNum + "computer] \n Hai Vinto";
   playerScore++;
 }
 else{
-  message="Round "+ x +" [player: "+ playerNum +":"+ comNum + "computer] \n Hai Perso";
+  message="Round "+ parseInt(x+1) +" [player: "+ playerNum +":"+ comNum + "computer] \n Hai Perso";
   comScore++;
 }
+alert("Round "+ parseInt(x+1))
 alert(message);
-if(x==round){
+
+if(x==rounds-1){
   if(playerScore==comScore) {
-    round++;//aumentiamo il numero di round per evitare il pareggio
+    rounds++;//aumentiamo il numero di round per evitare il pareggio
   }
-  else if(playerscore>comscore){
-    message="Round "+ x +" [player: "+ playerscore +":"+ comscore + "computer] \n Hai Vinto";
+  else if(playerScore>comScore){
+    message="Hai Vinto la partita "+ playerScore + " a "+ comScore;
   }
   else{
-    message="Round "+ x +" [player: "+ playerscore +":"+ comscore + "computer] \n Hai Perso";
+    message="Hai Perso la partite "+ playerScore + " a "+ comScore;
   }
-
+  alert(message);
 
 
   if (confirm("vuoi ri giocare?")) {
     message = "Preparati a un'altra partita!";
-    
     x=0;
     playerScore=0;
     comScore=0;
   } else {
-    message = "peccato!";
+    message = "!";
   }
   alert(message);
 }
