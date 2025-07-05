@@ -15,8 +15,9 @@ const mails= [
 
 // chiediamo all'utente di inserire la propria e-mail e dichiariamo anche la variabile userMail dove immagazzineremo l'input
 const userMail = prompt("inserisci la tua mail");
-//dichiaro una variabile di supporto booleana
+//dichiaro una variabile di supporto booleana e della stringa di output
 let permission=false;
+let permissionOutput="";
 
 //utilizziamo il for per andare a confrontare l'input con ogni posizione dell'array mails , e in caso sia uguale (condizione per poter accedere) darò il permesso e in caso contrario no
 // debug : console.log(mails.length) 
@@ -24,6 +25,15 @@ for(let x=0 ; x<mails.length ; x++){
   //faccio un confronto diretto e metto in permission il risultato booleano  dell'espressione di uguaglianza
 permission= userMail == mails[x];
 //controlliamo se è vera, perchè in quel caso bisogna interrompere il for forzando l'indice ad andare a fine ciclo (come da dichiarazione, se vogliamo farlo andare finche non è minore di mails.length) quindi x=mails.length 
-
-if (permission==true) x=mails.length; // possiamo mettere anche tutto su una linea 
+//console.log(userMail == mails[x])                           //debug
+//console.log("permission "+permission)                                     //debug
+if (permission==true){
+  x=mails.length; 
+  permissionOutput="complimenti  "+ userMail +", Hai il permesso per accedere" 
+}  
+else{
+  permissionOutput="Siamo Spiacenti  "+ userMail +", Non hai il permesso per accedere"
+} 
 }
+
+alert(""+permissionOutput+"");
