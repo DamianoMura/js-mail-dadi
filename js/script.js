@@ -48,10 +48,10 @@ let rounds; //decidiamo noi il numero di round
 let playerScore=0; //punteggio del giocatore
 let comScore=0; //punteggio del computer
 let message="";
-rounds=prompt("inserisci il numero di round");
+rounds=parseInt(prompt("inserisci il numero di round"));
 //console.log(parseInt(rounds));  //debug
 //facciamo un for loop che dura quanto il numero di round e mi consente di 
-for(let x=0 ; x<parseInt(rounds) ; x++){
+for(let x=0 ; x<rounds ; x++){
 alert("Tira i Dadi");
 playerNum=Math.floor(Math.random()*6)+1;
 comNum=Math.floor(Math.random()*6)+1;
@@ -60,12 +60,36 @@ if(playerNum==comNum) {
 }
 else if(playerNum>comNum){
   message="Round "+ x +" [player: "+ playerNum +":"+ comNum + "computer] \n Hai Vinto";
-  
+  playerScore++;
 }
 else{
   message="Round "+ x +" [player: "+ playerNum +":"+ comNum + "computer] \n Hai Perso";
-
+  comScore++;
 }
 alert(message);
+if(x==round){
+  if(playerScore==comScore) {
+    round++;//aumentiamo il numero di round per evitare il pareggio
+  }
+  else if(playerscore>comscore){
+    message="Round "+ x +" [player: "+ playerscore +":"+ comscore + "computer] \n Hai Vinto";
+  }
+  else{
+    message="Round "+ x +" [player: "+ playerscore +":"+ comscore + "computer] \n Hai Perso";
+  }
+
+
+
+  if (confirm("vuoi ri giocare?")) {
+    message = "Preparati a un'altra partita!";
+    
+    x=0;
+    playerScore=0;
+    comScore=0;
+  } else {
+    message = "peccato!";
+  }
+  alert(message);
+}
 }
 
