@@ -47,8 +47,25 @@ let comNum; //numero generato per il computer
 let rounds; //decidiamo noi il numero di round
 let playerScore=0; //punteggio del giocatore
 let comScore=0; //punteggio del computer
+let message="";
 rounds=prompt("inserisci il numero di round");
 //console.log(parseInt(rounds));  //debug
-//facciamo un for loop che dura quanto il numero di round
+//facciamo un for loop che dura quanto il numero di round e mi consente di 
+for(let x=0 ; x<parseInt(rounds) ; x++){
+alert("Tira i Dadi");
+playerNum=Math.floor(Math.random()*6)+1;
+comNum=Math.floor(Math.random()*6)+1;
+if(playerNum==comNum) {
+  message="Round "+ x +" [player: "+ playerNum +":"+ comNum + "computer] \n Patta";
+}
+else if(playerNum>comNum){
+  message="Round "+ x +" [player: "+ playerNum +":"+ comNum + "computer] \n Hai Vinto";
+  
+}
+else{
+  message="Round "+ x +" [player: "+ playerNum +":"+ comNum + "computer] \n Hai Perso";
 
+}
+alert(message);
+}
 
