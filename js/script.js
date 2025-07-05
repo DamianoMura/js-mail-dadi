@@ -1,3 +1,5 @@
+//  MAILS
+
 // iniziamo con le mail, creando un array contenente le mail di partenza
 // e poi tramite prompt facciamo inserire all'utente la propria mail
 //per poi andarla a cercare nell'array e stampare se si ha accesso o meno 
@@ -37,3 +39,16 @@ else{
 }
 
 alert(""+permissionOutput+"");
+
+//DADI
+//variabili
+let playerNum;  //numero generato per il giocatore 
+let comNum; //numero generato per il computer
+let rounds; //decidiamo noi il numero di round
+let playerScore=0; //punteggio del giocatore
+let comScore=0; //punteggio del computer
+rounds=prompt("inserisci il numero di round");
+//console.log(parseInt(rounds));  //debug
+//facciamo un for loop che dura quanto il numero di round
+
+
