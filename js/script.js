@@ -23,4 +23,7 @@ let permission=false;
 for(let x=0 ; x<mails.length ; x++){
   //faccio un confronto diretto e metto in permission il risultato booleano  dell'espressione di uguaglianza
 permission= userMail == mails[x];
+//controlliamo se è vera, perchè in quel caso bisogna interrompere il for forzando l'indice ad andare a fine ciclo (come da dichiarazione, se vogliamo farlo andare finche non è minore di mails.length) quindi x=mails.length 
+
+if (permission==true) x=mails.length; // possiamo mettere anche tutto su una linea 
 }
