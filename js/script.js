@@ -48,46 +48,70 @@ let rounds; //decidiamo noi il numero di round
 let playerScore=0; //punteggio del giocatore
 let comScore=0; //punteggio del computer
 let message="";
+let winner = false;
+
+
+alert("Giochiamo a dadi...." );
 rounds=parseInt(prompt("inserisci il numero di round"));
 //console.log(parseInt(rounds));  //debug
 //facciamo un for loop che dura quanto il numero di round e mi consente di 
 for(let x=0 ; x<rounds ; x++){
+ alert("Round "+ parseInt(x+1)+" score[ "+playerScore+" : "+comScore+ "]" )
+  alert("Tira i Dadi");
 
-playerNum=Math.floor(Math.random()*6)+1;
-comNum=Math.floor(Math.random()*6)+1;
+  playerNum=Math.floor(Math.random()*6)+1;
+  comNum=Math.floor(Math.random()*6)+1;
 
-
-alert("Round "+ parseInt(x+1)+" score[ "+playerScore+" : "+comScore+ "]" )
-alert("Tira i Dadi");
-if(playerNum==comNum) {
-  message="Round "+ parseInt(x+1) +" [player: "+ playerNum +" : "+ comNum + " computer] \n Patta";
-}
-else if(playerNum>comNum){
-  message="Round "+ parseInt(x+1) +" [player: "+ playerNum +" : "+ comNum + " computer] \n Hai Vinto";
-  playerScore++;
-}
-else{
-  message="Round "+ parseInt(x+1) +" [player: "+ playerNum +" : "+ comNum + " computer] \n Hai Perso";
-  comScore++;
-}
+  if(playerNum==comNum) {
+    message="Round "+ parseInt(x+1) +" [player: "+ playerNum +" : "+ comNum + " computer] \n Patta";
+  }
+  else if(playerNum>comNum){
+    message="Round "+ parseInt(x+1) +" [player: "+ playerNum +" : "+ comNum + " computer] \n Hai Vinto";
+    playerScore++;
+  }
+  else{
+    message="Round "+ parseInt(x+1) +" [player: "+ playerNum +" : "+ comNum + " computer] \n Hai Perso";
+    comScore++;
+  }
 //per ogni round dopo che ho controllato chi ha fatto punto stampo il messaggio in un alert
-alert(message);
+  alert(message);
 
-console.log(rounds);
+// console.log(rounds); //debug
 
 
 //sempre all'interno del for principale controlliamo se è l'ultimo round e se è patta aumentiamo di 1 round per decretare il vincitore
-if(playerScore==comScore && x==rounds-1){
-  //alert con condizione per reiniziare con il numero di round già fissato in precedenza
-  rounds++;
+  if(playerScore==comScore && x==rounds-1){
+  //aumentiamo il numero di round per non finire in patta
+    rounds++;
+  }
+  else if (playerScore>comScore && x==rounds-1){
+  message="Hai vinto la partita "+playerScore+ " a "+comScore; 
+  winner=true;
+  }
+  else if (playerScore<comScore && x==rounds-1){
+  message="Hai perso la partita "+playerScore+ " a "+comScore; 
+  winner=true;
+  }
+//
+  if(winner==true){
+    alert(message)
+//chiediamo se si vuole fare un'altra partita
+  if (confirm("vuoi giocare di nuovo???")) {
+    
+    x=0;
+    playerScore=0;
+    comScore=0;
+    winner=false;
+    // console.log(winner+" "+x+" "+rounds+" "+playerScore+" "+comScore ) //debug
+    message = "preparati a una nuova partita!";
+  }
+  else {
+    message = "grazie per aver giocato!";
+  }
+  alert(message)
+  rounds=parseInt(prompt("inserisci il numero di round"));
+  }
 
-}
-else if (playerScore>comScore && x==rounds-1){
-message="Hai vinto la partita "+playerScore+ " a "+comScore; 
 
-}
-else if (playerScore<comScore && x==rounds-1){
-message="Hai perso la partita "+playerScore+ " a "+comScore; 
-}
 }
 
