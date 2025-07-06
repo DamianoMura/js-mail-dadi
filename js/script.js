@@ -109,6 +109,7 @@ for(let x=0 ; x<rounds ; x++){
     message = "grazie per aver giocato!";
   }
   alert(message)
+  if(winner=false) //nel caso si voglia ri giocare basta controllare che la variabile sia di nuovo in false e facciamo re inserire il numero di round che si vuole giocare
   rounds=parseInt(prompt("inserisci il numero di round"));
   }
 
