@@ -52,45 +52,42 @@ rounds=parseInt(prompt("inserisci il numero di round"));
 //console.log(parseInt(rounds));  //debug
 //facciamo un for loop che dura quanto il numero di round e mi consente di 
 for(let x=0 ; x<rounds ; x++){
-alert("Tira i Dadi");
+
 playerNum=Math.floor(Math.random()*6)+1;
 comNum=Math.floor(Math.random()*6)+1;
+
+
+alert("Round "+ parseInt(x+1)+" score[ "+playerScore+" : "+comScore+ "]" )
+alert("Tira i Dadi");
 if(playerNum==comNum) {
-  message="Round "+ parseInt(x+1) +" [player: "+ playerNum +":"+ comNum + "computer] \n Patta";
+  message="Round "+ parseInt(x+1) +" [player: "+ playerNum +" : "+ comNum + " computer] \n Patta";
 }
 else if(playerNum>comNum){
-  message="Round "+ parseInt(x+1) +" [player: "+ playerNum +":"+ comNum + "computer] \n Hai Vinto";
+  message="Round "+ parseInt(x+1) +" [player: "+ playerNum +" : "+ comNum + " computer] \n Hai Vinto";
   playerScore++;
 }
 else{
-  message="Round "+ parseInt(x+1) +" [player: "+ playerNum +":"+ comNum + "computer] \n Hai Perso";
+  message="Round "+ parseInt(x+1) +" [player: "+ playerNum +" : "+ comNum + " computer] \n Hai Perso";
   comScore++;
 }
-alert("Round "+ parseInt(x+1))
+//per ogni round dopo che ho controllato chi ha fatto punto stampo il messaggio in un alert
 alert(message);
 
-if(x==rounds-1){
-  if(playerScore==comScore) {
-    rounds++;//aumentiamo il numero di round per evitare il pareggio
-  }
-  else if(playerScore>comScore){
-    message="Hai Vinto la partita "+ playerScore + " a "+ comScore;
-  }
-  else{
-    message="Hai Perso la partite "+ playerScore + " a "+ comScore;
-  }
-  alert(message);
+console.log(rounds);
 
 
-  if (confirm("vuoi ri giocare?")) {
-    message = "Preparati a un'altra partita!";
-    x=0;
-    playerScore=0;
-    comScore=0;
-  } else {
-    message = "!";
-  }
-  alert(message);
+//sempre all'interno del for principale controlliamo se è l'ultimo round e se è patta aumentiamo di 1 round per decretare il vincitore
+if(playerScore==comScore && x==rounds-1){
+  //alert con condizione per reiniziare con il numero di round già fissato in precedenza
+  rounds++;
+
+}
+else if (playerScore>comScore && x==rounds-1){
+message="Hai vinto la partita "+playerScore+ " a "+comScore; 
+
+}
+else if (playerScore<comScore && x==rounds-1){
+message="Hai perso la partita "+playerScore+ " a "+comScore; 
 }
 }
 
